@@ -1,3 +1,9 @@
+<script>
+    export let score;
+    export let winningText;
+    export let won;
+</script>
+
 <style>
     .player {
         flex-grow: 1;
@@ -19,7 +25,10 @@
 </style>
 
 <div class="player">
-    <h2>10</h2>
+    <h2>{score}</h2>
     <button class="plus">+</button>
     <button class="minus">-</button>
+    {#if won}
+        <h2>{winningText}</h2>
+    {/if}
 </div>
