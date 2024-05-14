@@ -1,10 +1,10 @@
-
 <script>
 	import Player from './Player.svelte';
 	let redScore = 10;
 	let blueScore = 10;
-	let blueWon = false;
-	let redWon = false;
+	$: blueWon = redScore <= 0;
+	$: redWon = blueScore <= 0;
+	$: gameOver = blueWon || redWon; 
 </script>
 
 <style>
@@ -37,8 +37,8 @@
 <main>
 	<h1>Counters</h1>
 	<div id="controls-container">
-		<Player won={blueWon} winningText="Blue Wins!" score={blueScore} />
-		<Player won={redWon} winningText="Red Wins!" score={redScore} />
+		<Player {gameOver} fontColor="#0000AA" won={blueWon} winningText="Blue Wins!" score={blueScore} />
+		<Player {gameOver} fontColor="#AA0000" won={redWon} winningText="Red Wins!" score={redScore} />
 	</div>
 	<button>Start Game</button>
 </main>
